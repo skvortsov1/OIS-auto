@@ -49,3 +49,11 @@ jobs:
         with:
           name: allure-report
           path: ./allure-report
+
+      - name: Send notification to Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "Playwright tests completed with status: ${{ job.status }}"
+          SLACK_TITLE: "OIS Automation Test Results"
