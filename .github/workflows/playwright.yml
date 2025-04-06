@@ -80,13 +80,9 @@ jobs:
           SLACK_USERNAME: "OIS Automation"
           SLACK_ICON_EMOJI: ":rocket:"
           SLACK_COLOR: ${{ job.status }}
-          SLACK_TITLE: "Playwright Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}"
+          SLACK_TITLE: "Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}"
           SLACK_MESSAGE: |
-            SLACK_MESSAGE: |
               *Environment:* ${{ github.event.inputs.environment }}
-              *Repository:* ${{ github.repository }}
-              *Branch:* ${{ github.ref_name }}
-              *Commit:* <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>
               *Author:* ${{ github.actor }}
               *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>
               *Allure Report:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|Download Allure artifacts>
