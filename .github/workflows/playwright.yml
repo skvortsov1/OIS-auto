@@ -2,6 +2,15 @@ name: Playwright Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Test environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - stage
   push:
     branches: [ main ]
   pull_request:
@@ -39,6 +48,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Set environment variable
+        run: echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV   
+
       - name: Install Allure commandline
         run: npm install -g allure-commandline
 
@@ -53,13 +65,13 @@ jobs:
 
       - name: Generate Allure Report
         run: |
-          allure generate ./allure-results --clean -o ./allure-report
+          allure generate ./allure-results --clean -o ./allure-report-${{ github.event.inputs.environment }}
 
       - name: Upload Allure Report as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: ./allure-report
+          name: allure-report-${{ github.event.inputs.environment }}
+          path: ./allure-report-${{ github.event.inputs.environment }}
 
       - name: Send notification to Slack
         uses: rtCamp/action-slack-notify@v2
@@ -71,6 +83,7 @@ jobs:
           SLACK_TITLE: "Playwright Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}"
           SLACK_MESSAGE: |
             SLACK_MESSAGE: |
+              *Environment:* ${{ github.event.inputs.environment }}
               *Repository:* ${{ github.repository }}
               *Branch:* ${{ github.ref_name }}
               *Commit:* <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>
