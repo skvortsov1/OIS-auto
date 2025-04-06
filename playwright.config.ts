@@ -6,7 +6,7 @@ export default defineConfig({
   timeout: 30 * 1000,
   use: {
     baseURL: 'https://mriia-dev-webapp.azurewebsites.net/', // твой рабочий URL
-    headless: false,
+    headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
