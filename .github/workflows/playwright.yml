@@ -1,12 +1,13 @@
 name: Playwright Tests
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 0 * * *' # каждый день в полночь
+    - cron: '0 0 * * *' 
 
 jobs:
   test:
