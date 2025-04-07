@@ -1,3 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","4519","login to Dev","chromium","Mon Apr 07 15:52:08 UTC 2025","passed","Mon Apr 07 15:52:13 UTC 2025","loginToDev","login.spec.ts","",""
-"","5451","login to Dev","firefox","Mon Apr 07 15:52:08 UTC 2025","passed","Mon Apr 07 15:52:14 UTC 2025","loginToDev","login.spec.ts","",""
