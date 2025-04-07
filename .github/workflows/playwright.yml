@@ -58,8 +58,14 @@ jobs:
       - name: Install Allure commandline
         run: npm install -g allure-commandline
 
+      - name: Clean before tests
+        run: npm run clean
+
       - name: Run Playwright tests
-        run: npm run test
+        run: ENVIRONMENT=${{ env.ENVIRONMENT }} npx playwright test
+
+      - name: Clean storageState after tests
+        run: npm run clean:storage
 
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4

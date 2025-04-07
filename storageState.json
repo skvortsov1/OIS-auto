@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": ".AspNetCore.Antiforgery.59d2S5Gpdj4",
+      "value": "CfDJ8Au9MQDCBFBLrZQmLIFCN5KMv0gpMO8mGziDcPagfeiDMj-X_4h0iQSLB6G-h02aKBLGTNoKNs2fkRvlb8om6QO8jiswS7K_iW64p0z2Ghzxrx8EBi8rZpXa3oMh57zF_97CSBAED7HMG9GirtsdKhQ",
+      "domain": "mriia-dev-webapp.azurewebsites.net",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": ".AspNetCore.Identity.Application",
+      "value": "CfDJ8Au9MQDCBFBLrZQmLIFCN5LqJEG0rkMdg6jD0pmDPQy_95-YwMywm7xwUmN9nwNcmeCEJ6gcQjsR90o5Pt8QTaFbnalavYrwHe9cXqJ_mdaS7SER9w-J9zyebMna3lqD_6852E0DvyRnXAQFQ8Kua56JyKkvk78FhV1Wp_iQvfI4heuL8HzmMWWyhLs1A2mp44Pf_Lasypfxnwh8eiwlgKUXomjIv2pO1xmpCZQD7pfLz67_yWiT65xD0DrSuZTjMLoV_hcL5zhjDWif881emFAH05lbi7cjqx_QkwaL_HhPb9I7pObTWNQZQ9to-f4Vgt_kGB_el63XuBmlO0_ji-FLpgdmmE6nxxJi3ohjBJ_ZFXNVOujBW40zxBUZZqhISLcm_tnv5K7v2kYZERRHCJdYWGx1SC9PjIL0sDcXFDNq9-Lo2zkgoVhutb2DMa58olhgB6XK3DFisM7LYcOH_LrUnrxOVIviSYd2y4BWvHPRa2DbXMYJcWTZjkfB9ps5l2x0TiMpryd30N6enACE-B37JU2fmJCjvb7OjOXPkmoX2TqZnNSfTerNnoZTkmwUtrhOPz99sT0aS3RiIVOuk4lA2pX5OQqrt9AmMV32kZhNiCFmamOMI9y0tst9RIymHKpkfsiThOKMex-ql_MCHuSiGci6fnuK2OiRQ_I8AaAqPsez86JTYS4U0ArBtOV6T2tClIwRuazajaCbxFffSvCYgIPPWCnhvz63C37z5HGciT-yMNzIJs6NmYkYB1A6AU2lRLqOHkNbqBy2EJcjqPPR10Wb6GKYWe-FYZPbqjBIHYk5rNE0_dKTTw1ljJiO8-R0n7ZU_jseoJvIvq785wgNZcmIW37jk0eii-YSgGT0l3OCna5OS_O4BTH5Pc7pBx79hKIFvYhGU9NqPaD6VbuMqjdzq8gx3KkrwM2f3OrLLwere4Af3Nn8F6MzYXwA93VP0vV9NMCaLDnyNvsyIRROBUBJ-XP-vFDUEl5reOukND-Amya-VaMXMHAS4RDgTnLQUrsWSKiNUcg8iF5Curl4l-br2O99tT-zNBsFioDrSXdCZj1lYcA1dlkZZ8wnU7UTJpHEUahl_q41L7nepdYAdAoV1VBa3LFBdDoimdOUVzNZmfncO4qXdyRUBl-32UVUW8bO8SzBzTT1vXz43KbxLKDSQ12QtBiQ-pKwvfVR3KleWcqqSSOPJX68_BD7V_FbXw8wYKZc53rsEVOKYPk",
+      "domain": "mriia-dev-webapp.azurewebsites.net",
+      "path": "/",
+      "expires": 1744652484.730691,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

@@ -10,7 +10,7 @@ test.describe("loginToDev", ()=>{
 
     test.beforeEach(async ({ page }) => {
       loginDev = new LoginToDev(page); 
-      await page.goto(configDev.baseURL); 
+      await page.goto('/');
     })
 
     test("login to Dev", async({page})=>{

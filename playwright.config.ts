@@ -1,24 +1,30 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const globalSetup = require('./global-setup');
+
 const environment = process.env.ENVIRONMENT || 'dev';
 
 const baseURLs = {
   dev: 'https://mriia-dev-webapp.azurewebsites.net/',
-  stage: 'https://mriia-stage-webapp.azurewebsites.net/', 
+  stage: 'https://mriia-stage-webapp.azurewebsites.net/',
 };
 
 export default defineConfig({
-  testDir: './tests',
-  retries: 1,
-  timeout: 30 * 1000,
+  globalSetup, 
+  testDir: './tests', 
+  retries: 1, 
+  timeout: 30 * 1000, 
+
   use: {
-    baseURL: baseURLs[environment],
-    headless: true,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    trace: 'on-first-retry',
-    actionTimeout: 5000
+    baseURL: baseURLs[environment], 
+    storageState: './storageState.json', 
+    headless: true, 
+    screenshot: 'only-on-failure', 
+    video: 'retain-on-failure', 
+    trace: 'on-first-retry', 
+    actionTimeout: 5000, 
   },
+
   projects: [
     {
       name: 'chromium',
@@ -29,6 +35,7 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
   ],
+
   reporter: [
     ['html', { open: 'never' }],
     ['list'],
