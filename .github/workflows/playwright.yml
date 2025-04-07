@@ -81,7 +81,11 @@ jobs:
           SLACK_ICON_EMOJI: ":rocket:"
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: "Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}"
+          SLACK_MSG_AUTHOR: ""
+          SLACK_LINK_NAMES: "false"
+          SLACK_FOOTER: ""
           SLACK_MESSAGE: |
+              *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name }}
               *Environment:* ${{ github.event.inputs.environment }}
               *Author:* ${{ github.actor }}
               *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>
