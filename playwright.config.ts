@@ -1,7 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const globalSetup = require('./global-setup');
-
 const environment = process.env.ENVIRONMENT || 'dev';
 
 const baseURLs = {
@@ -10,19 +8,18 @@ const baseURLs = {
 };
 
 export default defineConfig({
-  globalSetup, 
-  testDir: './tests', 
-  retries: 1, 
-  timeout: 30 * 1000, 
-
+  globalSetup: './global-setup.js', 
+  testDir: './tests',
+  retries: 1,
+  timeout: 30 * 1000,
   use: {
-    baseURL: baseURLs[environment], 
-    storageState: './storageState.json', 
-    headless: true, 
-    screenshot: 'only-on-failure', 
-    video: 'retain-on-failure', 
-    trace: 'on-first-retry', 
-    actionTimeout: 5000, 
+    baseURL: baseURLs[environment],
+    storageState: './storageState.json',
+    headless: true,
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    trace: 'on-first-retry',
+    actionTimeout: 5000,
   },
 
   projects: [
