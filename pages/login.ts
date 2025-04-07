@@ -16,7 +16,7 @@ export class LoginToDev {
 
         await this.page.getByRole('textbox', { name: 'Enter identity' }).fill(configDev.login);
         await this.page.getByRole('textbox', { name: 'Пароль' }).fill(configDev.password);
-        await this.page.getByRole('button', { name: 'Увійти' }).click();
+        await this.page.getByRole('button', { name: 'ERROR' }).click();
 
     }
 
