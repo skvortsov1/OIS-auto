@@ -35,7 +35,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -49,7 +48,12 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Set environment variable
-        run: echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV   
+        run: |
+          if [ -z "${{ github.event.inputs.environment }}" ]; then
+            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+          else
+            echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
+          fi
 
       - name: Install Allure commandline
         run: npm install -g allure-commandline
@@ -65,13 +69,13 @@ jobs:
 
       - name: Generate Allure Report
         run: |
-          allure generate ./allure-results --clean -o ./allure-report-${{ github.event.inputs.environment }}
+          allure generate ./allure-results --clean -o ./allure-report-${{ env.ENVIRONMENT }}
 
       - name: Upload Allure Report as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report-${{ github.event.inputs.environment }}
-          path: ./allure-report-${{ github.event.inputs.environment }}
+          name: allure-report-${{ env.ENVIRONMENT }}
+          path: ./allure-report-${{ env.ENVIRONMENT }}
 
       - name: Send notification to Slack
         uses: rtCamp/action-slack-notify@v2
@@ -84,9 +88,11 @@ jobs:
           SLACK_MSG_AUTHOR: ""
           SLACK_LINK_NAMES: "false"
           SLACK_FOOTER: ""
+          SLACK_ICON: ""
+          SLACK_UNFURL_LINKS: "false"
           SLACK_MESSAGE: |
-              *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name }}
-              *Environment:* ${{ github.event.inputs.environment }}
-              *Author:* ${{ github.actor }}
-              *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>
-              *Allure Report:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|Download Allure artifacts>
+            *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name == 'push' && 'Push to Main Branch' || github.event_name }}
+            *Environment:* ${{ env.ENVIRONMENT }}
+            *Author:* ${{ github.actor }}
+            *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>
+            *Allure Report:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|Download Allure artifacts>
