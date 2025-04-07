@@ -83,6 +83,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report-${{ env.ENVIRONMENT }}
           destination_dir: ${{ env.ENVIRONMENT }}
+        
 
       - name: Send notification to Slack
         uses: rtCamp/action-slack-notify@v2
