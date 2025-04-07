@@ -85,6 +85,13 @@ jobs:
           name: allure-report-${{ env.ENVIRONMENT }}
           path: ./allure-report-${{ env.ENVIRONMENT }}
 
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report-${{ env.ENVIRONMENT }}
+          destination_dir: ${{ env.ENVIRONMENT }}
+
       - name: Send Slack notification
         run: |
           STATUS="${{ job.status }}"
@@ -107,12 +114,14 @@ jobs:
             EVENT="$EVENT_NAME"
           fi
 
+          REPORT_URL="https://skvortsov1.github.io/OIS-auto/${{ env.ENVIRONMENT }}/index.html"
+
           MESSAGE="*$ICON Test Run — $STATUS*\n
           *Event:* $EVENT\n
           *Environment:* ${{ env.ENVIRONMENT }}\n
           *Author:* ${{ github.actor }}\n
           *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\n
-          *Allure Report:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|Download Allure artifacts>"
+          *Allure Report:* <$REPORT_URL|Open Allure Report>"
 
           curl -X POST -H 'Content-type: application/json' --data "{
             \"attachments\": [
