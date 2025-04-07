@@ -89,20 +89,13 @@ jobs:
           publish_dir: ./public
           destination_dir: ${{ env.ENVIRONMENT }}
 
-      - name: Send notification to Slack
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_USERNAME: "OIS Automation"
-          SLACK_ICON_EMOJI: ":rocket:"
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_TITLE: "Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}"
-          SLACK_FOOTER: ""
-          SLACK_LINK_NAMES: "false"
-          SLACK_UNFURL_LINKS: "false"
-          SLACK_MESSAGE: |
-            *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name == 'push' && 'Push to Main Branch' || github.event_name }}
-            *Environment:* ${{ env.ENVIRONMENT }}
-            *Author:* ${{ github.actor }}
-            *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>
-            *Allure Report:* <https://skvortsov1.github.io/OIS-auto/${{ env.ENVIRONMENT }}/|Open Allure Report>
+      - name: Send Slack notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data "{
+            \"text\": \"*Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}*\n
+            *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name == 'push' && 'Push to Main Branch' || github.event_name }}\n
+            *Environment:* ${{ env.ENVIRONMENT }}\n
+            *Author:* ${{ github.actor }}\n
+            *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\n
+            *Allure Report:* <https://skvortsov1.github.io/OIS-auto/${{ env.ENVIRONMENT }}/|Open Allure Report>\"
+          }" ${{ secrets.SLACK_WEBHOOK_URL }}
