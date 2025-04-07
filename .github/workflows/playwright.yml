@@ -71,23 +71,30 @@ jobs:
         run: |
           allure generate ./allure-results --clean -o ./allure-report-${{ env.ENVIRONMENT }}
 
-      - name: Prepare Allure Report for GitHub Pages
-        run: |
-          mkdir ./public
-          cp -r ./allure-report-${{ env.ENVIRONMENT }}/* ./public/
-
       - name: Upload Allure Report as artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-${{ env.ENVIRONMENT }}
           path: ./allure-report-${{ env.ENVIRONMENT }}
 
+      - name: Upload Playwright HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+
+      - name: Upload Playwright Test Media (screenshots and videos)
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-media
+          path: test-results/
+
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          destination_dir: ${{ env.ENVIRONMENT }}
+          publish_dir: ./allure-report-${{ env.ENVIRONMENT }}
+          publish_branch: gh-pages
 
       - name: Send Slack notification
         run: |
@@ -97,5 +104,6 @@ jobs:
             *Environment:* ${{ env.ENVIRONMENT }}\n
             *Author:* ${{ github.actor }}\n
             *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\n
-            *Allure Report:* <https://skvortsov1.github.io/OIS-auto/${{ env.ENVIRONMENT }}/|Open Allure Report>\"
+            *Allure Report:* <https://skvortsov1.github.io/OIS-auto/|Open Allure Report>\n
+            \"
           }" ${{ secrets.SLACK_WEBHOOK_URL }}

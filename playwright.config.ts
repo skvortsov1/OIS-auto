@@ -1,11 +1,18 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const environment = process.env.ENVIRONMENT || 'dev';
+
+const baseURLs = {
+  dev: 'https://mriia-dev-webapp.azurewebsites.net/',
+  stage: 'https://mriia-stage-webapp.azurewebsites.net/', 
+};
+
 export default defineConfig({
   testDir: './tests',
   retries: 1,
   timeout: 30 * 1000,
   use: {
-    baseURL: 'https://mriia-dev-webapp.azurewebsites.net/', // твой рабочий URL
+    baseURL: baseURLs[environment],
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -21,5 +28,14 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
   ],
-  reporter: [['html'], ['list'], ['allure-playwright']],
+  reporter: [
+    ['html', { open: 'never' }],
+    ['list'],
+    ['allure-playwright', {
+      outputFolder: 'allure-results',
+      detail: true,
+      screenshots: true,
+      videos: true,
+    }],
+  ],
 });
