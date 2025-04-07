@@ -1,3 +1,3 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","4213","login to Dev","chromium","Mon Apr 07 16:13:11 UTC 2025","passed","Mon Apr 07 16:13:15 UTC 2025","loginToDev","login.spec.ts","",""
-"","4109","login to Dev","firefox","Mon Apr 07 16:13:11 UTC 2025","passed","Mon Apr 07 16:13:15 UTC 2025","loginToDev","login.spec.ts","",""
+"","5785","login to Dev","chromium","Mon Apr 07 16:43:44 UTC 2025","passed","Mon Apr 07 16:43:50 UTC 2025","loginToDev","login.spec.ts","",""
+"","7396","login to Dev","firefox","Mon Apr 07 16:43:44 UTC 2025","passed","Mon Apr 07 16:43:51 UTC 2025","loginToDev","login.spec.ts","",""
