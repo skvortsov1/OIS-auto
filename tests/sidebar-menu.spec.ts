@@ -39,4 +39,9 @@ test.describe('Навігація по меню', () => {
     await menu.openSchoolDocuments();
     await expect(page.locator('text=Номер договору')).toBeVisible();
   });
+
+  test("Перехід до розділу Головна сторінка", async({page})=>{
+    await menu.openMainPage()
+    await expect(page.locator('#message')).toBeVisible();
+  })
 });

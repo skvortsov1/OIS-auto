@@ -38,4 +38,8 @@ export class Menu {
     await this.openSchoolManagementDropdown();
     await this.page.getByText('Документи школи').click();
   }
+
+  async openMainPage(){
+    await this.page.getByRole('link', { name: 'Головна сторінка' }).click();
+  }
 }
