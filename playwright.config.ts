@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const environment = process.env.ENVIRONMENT || 'dev';
+const isCI = !!process.env.CI; // <--- добавляем
 
 const baseURLs = {
   dev: 'https://mriia-dev-webapp.azurewebsites.net/',
@@ -8,7 +9,7 @@ const baseURLs = {
 };
 
 export default defineConfig({
-  globalSetup: './global-setup.js', 
+  globalSetup: './global-setup.js',
   testDir: './tests',
   retries: 1,
   timeout: 30 * 1000,
@@ -22,16 +23,23 @@ export default defineConfig({
     actionTimeout: 5000,
   },
 
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-  ],
+  projects: isCI
+    ? [
+        {
+          name: 'chromium',
+          use: { ...devices['Desktop Chrome'] },
+        },
+      ]
+    : [
+        {
+          name: 'chromium',
+          use: { ...devices['Desktop Chrome'] },
+        },
+        {
+          name: 'firefox',
+          use: { ...devices['Desktop Firefox'] },
+        },
+      ],
 
   reporter: [
     ['html', { open: 'never' }],
