@@ -185,7 +185,7 @@ test.describe('Навігація по меню', () => {
     await expect(page.getByRole('heading', { name: 'Довідник' })).toBeVisible();
   });
 
-  test("Перевірка завантаження модального вiкна Служби пiдтримка", async ({ page }) => {
+  test("Перевірка завантаження модального вiкна Служби пiдтримки", async ({ page }) => {
     await menu.openSupportModal();
     await expect(page.getByRole('heading', { name: 'Служба підтримки Мрії' })).toBeVisible();
     await page.getByRole('button', { name: 'Close' }).click();
