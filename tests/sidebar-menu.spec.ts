@@ -69,14 +69,127 @@ test.describe('Навігація по меню', () => {
     
   })
 
-  test("Перевірка відкриття сторінки Список Учнів", async({page})=>{
+  test("Перевірка завантаження сторінки Список Учнів", async({page})=>{
     await menu.openPupilsListPage()
     await expect(page.locator('.panel')).toBeVisible()
   })
 
-  test("Перевірка відкриття сторінки Розклад Учнів", async({page})=>{
+  test("Перевірка завантаження сторінки Розклад Учнів", async({page})=>{
     await menu.openPupilsSchedulePage()
     await expect(page.locator('div').filter({ hasText: 'Головна/Розклад учнів' }).nth(3)).toBeVisible()
   })
 
-});
+  test("Перевірка відкриття дропдауну Вчителі", async({page})=>{
+    await menu.openTeachersDropdown()
+    await Promise.all([
+      expect(page.getByRole('link').getByText('Список вчителів')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Відвідування')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Заміни')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Заповнення уроків')).toBeVisible(),
+
+    ]);
+  })
+
+  test("Перевірка завантаження сторінки Список Вчителів", async({page})=>{
+    await menu.openTeachersListPage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Список вчителів')).toBeVisible()
+  })
+
+  test("Перевірка завантаження сторінки Відвідування", async({page})=>{
+    await menu.openVisitListPage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Відвідування')).toBeVisible()
+  })
+
+  test("Перевірка завантаження сторінки Заміни", async({page})=>{
+    await menu.openTeachersChangeListPage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Заміни')).toBeVisible()
+  })
+
+  test("Перевірка завантаження сторінки Заповнення уроків", async({page})=>{
+    await menu.openContentLessonPage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Заповнення уроків')).toBeVisible()
+  })
+
+  test("Перевірка відкриття дропдауну Навчання", async({page})=>{
+    await menu.openLearningDropdown()
+    await Promise.all([
+      expect(page.getByRole('link').getByText('Розклад кабінетів')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Розклад класу')).toBeVisible(),
+    ]);
+  })
+
+  test("Перевірка завантаження сторінки Розкладу кабінетів", async({page})=>{
+    await menu.openCabinetSchedulePage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Розклад кабінетів')).toBeVisible()
+  })
+
+  test("Перевірка завантаження сторінки Розкладу класу", async({page})=>{
+    await menu.openClassSchedulePage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Розклад класу')).toBeVisible()
+  })
+
+  test("Перевірка завантаження сторінки Оголошення", async({page})=>{
+    await menu.openNotificationsPage()
+    await expect(page.getByLabel('breadcrumbs').getByText('Оголошення')).toBeVisible()
+  })
+
+  test("Перевірка відкриття дропдауну Статистика", async ({ page }) => {
+    await menu.openStatisticsDropdown();
+    await Promise.all([
+      expect(page.getByRole('listitem').filter({ hasText: 'Учні' }).nth(2)).toBeVisible(),
+      expect(page.getByRole('link').getByText('Вчителі')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Відвідування учнів (з причиною)')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Відвідування учнів (по днях)')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Відвідування працівників')).toBeVisible(),
+      expect(page.getByRole('link').getByText('Звіти по класах')).toBeVisible(),
+    ]);
+  });
+  
+  test("Перевірка завантаження сторінки Учні", async ({ page }) => {
+    await menu.openPupilsStatisticsPage();
+    await expect(page.getByLabel('breadcrumbs').getByText('Учні')).toBeVisible();
+  });
+  
+  test("Перевірка завантаження сторінки Вчителі", async ({ page }) => {
+    await menu.openTeachersStatisticsPage();
+    await expect(page.getByLabel('breadcrumbs').getByText('Вчителі')).toBeVisible();
+  });
+  
+  test("Перевірка завантаження сторінки Відвідування учнів (з причиною)", async ({ page }) => {
+    await menu.openPupilsAttendanceByReasonPage();
+    await expect(page.getByText('Відвідування та причини пропусків учнів')).toBeVisible();
+  });
+  
+  test("Перевірка завантаження сторінки Відвідування учнів (по днях)", async ({ page }) => {
+    await menu.openPupilsAttendanceByDaysPage();
+    await expect(page.getByRole('link', { name: 'Відвідування учнів (по днях)' })).toBeVisible();
+  });
+  
+  test("Перевірка завантаження сторінки Відвідування працівників", async ({ page }) => {
+    await menu.openEmployeesAttendancePage();
+    await expect(page.getByLabel('breadcrumbs').getByText('Відвідування працівників')).toBeVisible();
+  });
+  
+  test("Перевірка завантаження сторінки Звіти по класах", async ({ page }) => {
+    await menu.openClassReportsPage();
+    await expect(page.getByLabel('breadcrumbs').getByText('Звіти по класах')).toBeVisible();
+  });
+
+  test("Перевірка завантаження сторінки Налаштування", async ({ page }) => {
+    await menu.openSettingsPage();
+    await expect(page.getByLabel('breadcrumbs').getByText('Налаштування')).toBeVisible();
+  });
+  
+  test("Перевірка завантаження сторінки Довідник", async ({ page }) => {
+    await menu.openNotebookPage();
+    await expect(page.getByRole('heading', { name: 'Довідник' })).toBeVisible();
+  });
+
+  test("Перевірка завантаження модального вiкна Служби пiдтримка", async ({ page }) => {
+    await menu.openSupportModal();
+    await expect(page.getByRole('heading', { name: 'Служба підтримки Мрії' })).toBeVisible();
+    await page.getByRole('button', { name: 'Close' }).click();
+
+  });
+
+})
