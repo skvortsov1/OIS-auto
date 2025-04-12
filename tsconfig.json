@@ -1,17 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "module": "CommonJS",
-      "moduleResolution": "node",
-      "outDir": "dist",
-      "rootDir": ".",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true
-    },
-    "include": ["global-setup.js", "tests/**/*.ts", "pages/**/*.ts", "configs/**/*.ts", "playwright.config.ts"],
-    "exclude": ["node_modules"]
-  }
-  
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "global-setup.ts",
+    "tests/**/*.ts",
+    "pages/**/*.ts",
+    "configs/**/*.ts",
+    "playwright.config.ts"
+  ],
+  "exclude": ["node_modules"]
+}

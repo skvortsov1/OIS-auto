@@ -1,5 +1,5 @@
 import { expect, Page } from "@playwright/test";
-import { configDev} from "../configs/config.ts";
+import { configDev} from '../configs/config'
 
 
 export class LoginToDev {

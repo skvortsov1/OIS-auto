@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { LoginToDev} from "../pages/login.ts";
-import { configDev} from "../configs/config.ts";
+import { LoginToDev} from '../pages/login';
+import { configDev} from '../configs/config';
 
 
 
