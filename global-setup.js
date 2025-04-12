@@ -12,7 +12,6 @@ async function globalSetup() {
   await page.getByRole('button', { name: 'Увійти' }).click();
 
   await page.waitForURL(configDev.baseURL);
-
   await page.context().storageState({ path: './storageState.json' });
 
   await browser.close();
