@@ -1,11 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const environment = process.env.ENVIRONMENT || 'dev';
-
+// Четкая типизация окружений
 const baseURLs = {
   dev: 'https://mriia-dev-webapp.azurewebsites.net/',
   stage: 'https://mriia-stage-webapp.azurewebsites.net/',
-};
+} as const;
+
+type Environment = keyof typeof baseURLs;
+const environment: Environment = (process.env.ENVIRONMENT as Environment) || 'dev';
 
 export default defineConfig({
   globalSetup: './global-setup.js',
@@ -26,7 +28,11 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    }
+    },
+
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
   ],
 
   reporter: [
