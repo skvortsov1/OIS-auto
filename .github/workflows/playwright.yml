@@ -66,34 +66,40 @@ jobs:
 
       - name: Clean storageState after tests
         run: npm run clean:storage
+        if: always()
 
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: ./allure-results
+        if: always()
 
       - name: Generate Allure Report
         run: |
           allure generate ./allure-results --clean -o ./allure-report-${{ env.ENVIRONMENT }}
+        if: always()
 
       - name: Upload Allure Report as artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-${{ env.ENVIRONMENT }}
           path: ./allure-report-${{ env.ENVIRONMENT }}
+        if: always()
 
       - name: Upload Playwright HTML report
         uses: actions/upload-artifact@v4
         with:
           name: playwright-html-report
           path: playwright-report/
+        if: always()
 
       - name: Upload Playwright Test Media (screenshots and videos)
         uses: actions/upload-artifact@v4
         with:
           name: playwright-media
           path: test-results/
+        if: always()
 
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -101,15 +107,17 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report-${{ env.ENVIRONMENT }}
           publish_branch: gh-pages
+        if: always()
 
       - name: Send Slack notification
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
-            \"text\": \"*Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}*\n              *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name == 'push' && 'Push to Main Branch' || github.event_name }}\n
+            \"text\": \"*Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}*\n
+            *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name == 'push' && 'Push to Main Branch' || github.event_name }}\n
             *Environment:* ${{ github.event.inputs.environment || 'dev' }}\n
             *Author:* ${{ github.actor }}\n
             *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\n
             *Allure Report:* <https://skvortsov1.github.io/OIS-auto/|Open Allure Report>\n
             \"
-           }" ${{ secrets.SLACK_WEBHOOK_URL }}
-        
+          }" ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()

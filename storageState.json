@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": ".AspNetCore.Antiforgery.59d2S5Gpdj4",
-      "value": "CfDJ8Au9MQDCBFBLrZQmLIFCN5JAjh8ulDVAhn33a2FpgWevMmK80msREpIabL_cqCploss6m4U4Jh0VEHenfjwIr1hOj0u6hcQpe0dQMwVXS6ooznbiRHp8XtMcjZHRkrjHyN3nIYhMPeBlbsbbO8MD0Yc",
+      "value": "CfDJ8Au9MQDCBFBLrZQmLIFCN5K35tdlaoIHK-6aGKbU9OBVz0xhuDkYBGoAip5TB4FvuaINXVxh-SYTRA3d67y7lvNYcXSWouRiQGW2z7Ugu0Z3sQt5HU4KVWDeeAgMBEwS80e8CgpuCpwVZsRsOnSpmfk",
       "domain": "mriia-dev-webapp.azurewebsites.net",
       "path": "/",
       "expires": -1,
@@ -12,10 +12,10 @@
     },
     {
       "name": ".AspNetCore.Identity.Application",
-      "value": "CfDJ8Au9MQDCBFBLrZQmLIFCN5KROXHrvKU6pV-c-Ih_fUWJzylDKnua0SLHlBgApuSO2kbpLHwCo6GzLfYpLdTIBuqQqofk6P3Alf3T56j4xIKLzHQhf7QI2FayptOf0rTcavzNZf4fEpHS0yXxdQ8zI5ofJyLMUXijacOvoLHxsFvBBvN-qJjOVpOm6T115Q19HvR0TKOiqLEoowZLEsC_EUlq9PGQpuE6QDg0UJSdOYVGv6t6EoFr7zXvGv3ACi13tO2qEKZi90HaiaGBXmB7XOOJpt5Mv87-opyP9fcSDWhf0felENMYaPtdkYzYKOYFsx0Yj9XKrgJQTSHkoB4dNH7slTfWvvwbg_2xUq3Fdl8UtsQFr3ZKhLHBr9iRMkNkQkrir5DbBgs0NO_FxK00Pgk_79J2OJIC4S6SvSU8IInTabY2ZFFnEYU43UGPcs06NAqoQjWj258fTzavUtMqd3kMLIikqWkVKm5pjvgrKV8LQtN5j0WA0clJ7GZdsJZeo6LbkXnZZG5jDlpqnzuruV9Rf4pAiTWEZ23pjCBA0onhVItyeDo5FcvHjeY3q3Zw6I9-4VAa43uogpHUPaPzd_5TVP31Z1mUzWiLnLVDWLbfmTFfKameNHhTcaLwFK9GatVk9owy55HMz83J-QURQIeYvgY0Dy48ZZyHKM3FyQkMqlFGqw78Vw0fYD_--TP8pEDr1HlGj2Vg1Hobmk-AP9A8D2HZzli0PZ_qX4s9qiboD6Chpvy7L1F5CjWRrPDxGTEdXbN-Kl7GhQN4a05JeFUivI8r_4Cu70xWznRlGneLHCcHAfNB0lwIVUSzpyFsja3G--_DAb6MyBgCknAhEOQlFTI9omCx11PW1Wf6tYULcuvJa5TvKpivJxjoueOmsm7m8gzdAwgilyJcUng50wCwXJ_qsL0y_ejhTtdOHKZU64iNYsfzoeNgBDDq_lwvnsPkQxjQQbFULSpcvW5VD0FNLzks6GUfyOBf6sbgFNABAySnN_uB0chj2eoHtMuFdkZWZ1WIaX6ZGLl9BAfOW65B5N7bp3Fb9YZhr9DS978cnDo0lo4GdqrlvzMhJYEy-LZRkZKOuwDyUXC2UbPvD2RIQUucoLA7Jjn9GQgDl1pGwqNdewByoIk-ThrY7JJzqKUr42mKfPndyhg4ZJTJOpCPQFKTLbCQd-cR4_wEYFO6xJYEc0UceqtfqtoeP8lcyh7HGkV08hymxbaKwZ0E_V8",
+      "value": "CfDJ8Au9MQDCBFBLrZQmLIFCN5JTouBMCLAYdqnpfSm1EiJUEnbxnhzzl1GpGFntX82pGncsvybEI0hyAi_wvSx55m3ApjGITvVpthpwLNH5kGrvZQH1pnMPGY_cA_iTCzgYPK5eHKxyxHlocSn6gHPd-L9gN9ue-f1MeHOSeAmR0iyUZGp4JAOykw44aDbOiLkPt8iUaE1nm4FDZBT9IvOMJOEvuUOFeyMJcEYXtQrkwieK0DUUrc8vCKuSXjS2CP8ryCo3-80FhySRMo4uF8dqK0QCE1ExKViNolc4NatYVMfI9iVmseddzsbMDcb_Oxsifs9faU8HZG-Y3zJOen-pW0BwjzHGrbkfSqt1z5wtLOWBkdtiZUry9b9uCchWCkjiTLvnnJC7tCKUXGFtbc122tgNN4Yg4Z0Zt2oEy1W3XtFzO8jdw48aRddAZCzg8ahlqRpqitvregbkZTWi1VuDROHyybGU73UwEvYPTIGoBR-eARv-DuFiTW4SbsgotMlBbivNxFnAem5R42HxnHc_vYZ5k5M3cdKoURm36cnHxqWW2TpdX8O6fVUuRxRr6UYJELkAjeBtvZgzrVjDHpgkrh3uk_Bvd4mL1eV51UV38-uQyEowcs7ZVOWCMm1Fk5ENZRoUb-bqFUH_P9dxN6YOPiSz0kXfpAdtvIxs4wjCRSafyRHZlsDNElUoFSZSrYTPvqTEvv9ghAaHNNUrqZK3TonwLan8OjDycuaTTezZAu_hQsqVUQOw7MzokUyfJ-QpZkD2mFWsrOzLVojTNsnESnLP6p5qs-y5KHoPAT7sl-uw81-xaVEhQ9u6ZAS4_ZaIQKXYE9EA2X1bVWBNdAMVXaK8z2yUHxaKyN00Q9P0jgBCFn6JrL-r9yBA26_HGQC6n9161a9CG40BP29zVkSvPYERPeVivWhNWJF9fPTs4bcUkvEJ3OU1qNPFqfnfkO5CI9YR2D-YT6iuxTomuVZQcyWuCpQUCv2frmwQ5i3Ko-V20Dkecgp82-ijg6InZ-_RsYCgAFz34_klyAQg_krB2AII4_7Woshr8qPTVWjkXOQKnhoPQj3tYZdeOGDRJARsXc5ARi5b8oz6sXIacamFQHiZzAtItZGhapAAYJInEcs2C8P4Er6hlyJx8jzkUST_dyRWMsc6eu9sibEO8T_oM7GCp2XS_-n0SDJGuFyiA7zetezaCTAK0ajZeKBKsSfPSLwMdXip8sfp90eDOqYFm0g",
       "domain": "mriia-dev-webapp.azurewebsites.net",
       "path": "/",
-      "expires": 1745078675.766229,
+      "expires": 1745079526.289688,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
