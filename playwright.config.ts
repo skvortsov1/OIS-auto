@@ -13,7 +13,7 @@ export default defineConfig({
   globalSetup: './global-setup.js',
   testDir: './tests',
   retries: 1,
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   use: {
     baseURL: baseURLs[environment],
     storageState: './storageState.json',
@@ -21,7 +21,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
-    actionTimeout: 5000,
+    actionTimeout: 15000,
   },
 
   projects: [

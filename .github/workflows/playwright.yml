@@ -105,10 +105,11 @@ jobs:
       - name: Send Slack notification
         run: |
           curl -X POST -H 'Content-type: application/json' --data "{
-            \"text\": \"*Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}*\n
-            *Event:* ${{ github.event_name }}\n
-            *Environment:* ${{ env.ENVIRONMENT }}\n
+            \"text\": \"*Test Run — ${{ job.status == 'success' && '✅ PASSED' || '❌ FAILED' }}*\n              *Event:* ${{ github.event_name == 'workflow_dispatch' && 'Manual Trigger' || github.event_name == 'schedule' && 'Scheduled Run' || github.event_name == 'push' && 'Push to Main Branch' || github.event_name }}\n
+            *Environment:* ${{ github.event.inputs.environment || 'dev' }}\n
             *Author:* ${{ github.actor }}\n
             *Workflow:* <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\n
             *Allure Report:* <https://skvortsov1.github.io/OIS-auto/|Open Allure Report>\n
-          }" ${{ secrets.SLACK_WEBHOOK_URL }}
+            \"
+           }" ${{ secrets.SLACK_WEBHOOK_URL }}
+        
