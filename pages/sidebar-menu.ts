@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page , expect} from '@playwright/test';
 
 export class Menu {
   readonly page: Page;
@@ -7,11 +7,11 @@ export class Menu {
     this.page = page;
   }
 
-  async openSchools() {
+  async openSchoolsPage() {
     await this.page.getByRole('link', { name: 'Школи' }).click();
 }
 
-  async openSupportService() {
+  async openSupportServicePage() {
     await this.page.getByRole('link', {name: 'Служба підтримки'}).click();
   }
 
@@ -19,22 +19,22 @@ export class Menu {
     await this.page.getByText('Керування школою').click();
   }
 
-  async openPlatformNews() {
+  async openPlatformNewsPage() {
     await this.openSchoolManagementDropdown();
     await this.page.getByText('Новини платформи').click();
   }
 
-  async openUsers() {
+  async openUsersPage() {
     await this.openSchoolManagementDropdown();
     await this.page.getByText('Користувачі').click();
   }
 
-  async openDocumentTemplates() {
+  async openDocumentTemplatesPage() {
     await this.openSchoolManagementDropdown();
     await this.page.getByText('Шаблони документів').click();
   }
 
-  async openSchoolDocuments() {
+  async openSchoolDocumentsPage() {
     await this.openSchoolManagementDropdown();
     await this.page.getByText('Документи школи').click();
   }
@@ -42,4 +42,39 @@ export class Menu {
   async openMainPage(){
     await this.page.getByRole('link', { name: 'Головна сторінка' }).click();
   }
-}
+
+  async openJournalPage(){
+    await this.page.locator('#sidebar').getByRole('link', { name: 'Журнали' }).click()
+  }
+
+  async openSchedulePage(){
+    await this.page.getByRole('listitem').filter({ hasText: 'Розклад' }).first().click();
+  }
+
+  async openCalendarPage(){
+    await this.page.getByRole('link', { name: 'Календар подій' }).click()
+   } 
+  
+   async openPupilsDropdown() {
+    const button = this.page.getByRole('button', { name: 'Учні' });
+    const isExpanded = await button.getAttribute('aria-expanded');
+  
+    if (isExpanded !== 'true') {
+      await button.click();
+      await this.page.waitForSelector('#submenu-pupil'); // ждем пока подменю появится
+    }
+  }
+  
+  async openPupilsListPage() {
+    await this.openPupilsDropdown();
+    const listLink = this.page.getByRole('link', { name: 'Список учнів' });
+    await expect(listLink).toBeVisible();
+    await listLink.click();
+  }
+  
+  async openPupilsSchedulePage() {
+    await this.openPupilsDropdown();
+    const scheduleLink = this.page.locator('#submenu-pupil li').filter({ hasText: 'Розклад учнів' });
+    await expect(scheduleLink).toBeVisible();
+    await scheduleLink.click();
+  }}
