@@ -107,7 +107,9 @@ test.describe('Навігація по меню', () => {
 
   test("Перевірка завантаження сторінки Заповнення уроків", async({page})=>{
     await menu.openContentLessonPage()
-    await expect(page.getByLabel('breadcrumbs').getByText('Заповнення уроків')).toBeVisible()
+    await page.waitForURL('https://mriia-dev-webapp.azurewebsites.net/ClassDetail/TeacherTimetableInfo');
+    await expect(page.getByLabel('breadcrumbs').getByText('Заповнення уроків')).toBeVisible();
+    
   })
 
   test("Перевірка відкриття дропдауну Навчання", async({page})=>{
